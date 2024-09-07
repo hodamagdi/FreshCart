@@ -5,6 +5,7 @@ import { CartContext } from "../../Context/CartContext";
 import { WishListContext } from "../../Context/WishListContext";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { UserContext } from "../../Context/UserContext";
 
 function ProductItem({ product }) {
   const { addItemToCart, setCartItems } = useContext(CartContext);
@@ -13,20 +14,24 @@ function ProductItem({ product }) {
   const [isKeptWishlist, setIsKeptWishlist] = useState(false);
   const [isLoadingWishlist, setIsLoadingWishlist] = useState(false); 
   const [isLoadingCart, setIsLoadingCart] = useState(false); 
+  const {token} = useContext(UserContext);
+    const headers = {
+        token
+    };
+
+  const isAuthenticated = Boolean(token);
 
   useEffect(() => {
     async function getUserWishlist() {
       setIsLoadingWishlist(true);
       try {
         const { data } = await axios.get("https://ecommerce.routemisr.com/api/v1/wishlist", {
-          headers: {
-            token: localStorage.getItem("token"),
-          },
+          headers
         });
         const wishlistIds = data.data.map((item) => item._id);
         setIsKeptWishlist(wishlistIds.includes(product._id));
       } catch (error) {
-        console.error("Error fetching wishlist:", error);
+        error
       } finally {
         setIsLoadingWishlist(false);
       }

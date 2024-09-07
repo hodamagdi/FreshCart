@@ -29,7 +29,7 @@ function Cart() {
     setIsLoading(true);
     const response = await clearCart();
     if (response.data.message === "success") {
-      setCartDetails({ ...cartDetails, products: [] });
+      setCartDetails({ ...cartDetails, products: [] , totalCartPrice : "0" });
       toast.success('Cart cleared successfully');
     }
     setIsLoading(false);
@@ -49,7 +49,7 @@ function Cart() {
         <title>Cart</title>
       </Helmet>
       {
-        cartDetails && cartDetails.products.length === 0 ? (
+        cartDetails && cartDetails.products.length === 0 && cartDetails?.totalCartPrice == 0 ? (
           <EmptyCart />
         ) : (
           <div >
