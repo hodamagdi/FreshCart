@@ -20,7 +20,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="bg-white border-gray-200 dark:bg-gray-900">
+      <nav className="bg-gray-100 py-2 border-gray-200 dark:bg-gray-900">
         <div className="max-w-[1400px] flex gap-4 flex-wrap items-center justify-between mx-auto py-4">
           <a className="flex items-center">
             <img src={logo} alt="" className="w-10 h-7 px-0" />
@@ -91,7 +91,7 @@ function Navbar() {
           )}
 
           {/* Mobile Menu Button */}
-          <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-white">
+          <button onClick={() => setIsOpen(!isOpen)} className="md:hidden dark:text-white text-black">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
@@ -124,13 +124,49 @@ function Navbar() {
         {/* Mobile Menu */}
         {token && (
           <div className={`md:hidden ${isOpen ? 'block' : 'hidden'}`}>
-            <ul className="space-y-4 mt-4 flex flex-col justify-center">
-              <NavLink to="/" className="block px-4 py-2 text-white hover:text-green-500">Home</NavLink>
-              <NavLink to="/cart" className="block px-4 py-2 text-white hover:text-green-500">Cart</NavLink>
-              <NavLink to="/wishlist" className="block px-4 py-2 text-white hover:text-green-500">Wish List</NavLink>
-              <NavLink to="/products" className="block px-4 py-2 text-white hover:text-green-500">Products</NavLink>
-              <NavLink to="/brands" className="block px-4 py-2 text-white hover:text-green-500">Brands</NavLink>
-              <NavLink to="/categories" className="block px-4 py-2 text-white hover:text-green-500">Categories</NavLink>
+            <ul className="space-y-4 mt-4 flex flex-col justify-center text-center">
+            <Link
+                to=""
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 sm:hover:text-green-700 lg:p-0 dark:text-white sm:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent"
+              >
+                Home
+              </Link>
+
+              <Link
+                to="cart"
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 sm:hover:text-green-700 lg:p-0 dark:text-white sm:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent"
+              >
+                Cart
+              </Link>
+
+              <Link
+                to="wishlist"
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 sm:hover:text-green-700 lg:p-0 dark:text-white sm:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent"
+              >
+                Wish List
+              </Link>
+
+              <Link
+                to="products"
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 sm:hover:text-green-700 lg:p-0 dark:text-white sm:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent"
+              >
+                Products
+              </Link>
+
+              <Link
+                to="categories"
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 sm:hover:text-green-700 lg:p-0 dark:text-white sm:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent"
+              >
+                categories
+              </Link>
+
+              <Link
+                to="brands"
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 sm:hover:text-green-700 lg:p-0 dark:text-white sm:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent"
+              >
+                Brands
+              </Link>
+
             </ul>
             <div className="flex space-x-4 mt-4 justify-center">
               <ul>
