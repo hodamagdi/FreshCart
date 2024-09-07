@@ -21,7 +21,7 @@ function Navbar() {
   return (
     <>
       <nav className="bg-gray-100 py-2 border-gray-200 dark:bg-gray-900">
-        <div className="max-w-[1400px] flex gap-4 flex-wrap items-center justify-between mx-auto py-4">
+        <div className="max-w-[1400px] flex gap-4  items-center justify-between mx-auto py-4">
           <a className="flex items-center">
             <img src={logo} alt="" className="w-10 h-7 px-0" />
             <h1 className="text-black dark:text-gray-100 text-2xl me-3">FreshCart</h1>
@@ -75,7 +75,7 @@ function Navbar() {
             </div>
           )}
           {token && (
-            <div className="hidden md:flex items-center space-x-4">
+            <div className="hidden lg:flex items-center space-x-4">
               <ul>
                 <li className="flex gap-4">
                   <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-700 lg:p-0 dark:text-white lg:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent"><FaInstagram /></a>
