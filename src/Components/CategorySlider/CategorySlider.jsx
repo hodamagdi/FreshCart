@@ -5,6 +5,8 @@ import { useRef } from "react";
 import { IoMdArrowDropleftCircle, IoMdArrowDroprightCircle } from "react-icons/io";
 
 function CategorySlider() {
+  let sliderRef = useRef(null);
+  
 const {data : categories , isLoading , isError , error} = useCategories();
 
 if(isLoading){
@@ -14,7 +16,6 @@ if(isError){
   return <h3>{error}</h3>
 }
 
-let sliderRef = useRef(null);
 const next = () => {
   sliderRef.slickNext();
 };
