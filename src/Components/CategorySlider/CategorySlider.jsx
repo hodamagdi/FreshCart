@@ -1,6 +1,8 @@
 import Slider from "react-slick";
 import Loading from "../Loading/Loading";
 import useCategories from "../../Hooks/useCategories";
+import { useRef } from "react";
+import { IoMdArrowDropleftCircle, IoMdArrowDroprightCircle } from "react-icons/io";
 
 function CategorySlider() {
 const {data : categories , isLoading , isError , error} = useCategories();
@@ -11,6 +13,14 @@ if(isLoading){
 if(isError){
   return <h3>{error}</h3>
 }
+
+let sliderRef = useRef(null);
+const next = () => {
+  sliderRef.slickNext();
+};
+const previous = () => {
+  sliderRef.slickPrev();
+};
 
   var settings = {
     dots: false,
@@ -36,7 +46,7 @@ if(isError){
           slidesToShow: 3,
           slidesToScroll:1,
           infinite: true,
-          dots: true,
+          dots: false,
         }
       },
       {
@@ -46,7 +56,7 @@ if(isError){
           slidesToScroll: 1,
           infinite: true,
           initialSlide: 2,
-          dots: true
+          dots: false
         }
       },
       {
@@ -55,7 +65,7 @@ if(isError){
           slidesToShow: 1,
           slidesToScroll: 1,
           infinite: true,
-          dots: true
+          dots: false
         }
       }
     ]
@@ -65,7 +75,8 @@ if(categories.length === 0 ){
   return <Loading/>
 }
   return (
-    <Slider {...settings}>
+    <>
+    <Slider ref={(slider) => (sliderRef = slider)} {...settings}>
       {
         categories?.map((c)=> <div key={c._id} className=" my-6 focus:outline-none">
           <img src={c.image} alt="" className="h-[200px] w-full object-cover" />
@@ -73,6 +84,15 @@ if(categories.length === 0 ){
         </div>)
       }
     </Slider>
+     <div className="flex justify-center items-center gap-1 mb-2">
+     <button className="button" onClick={previous}>
+       <IoMdArrowDropleftCircle className="text-2xl md:text-4xl text-green-600" />
+     </button>
+     <button className="button" onClick={next}>
+       <IoMdArrowDroprightCircle className="text-2xl md:text-4xl text-green-600" />
+     </button>
+   </div>
+    </>
   );
 }
 
